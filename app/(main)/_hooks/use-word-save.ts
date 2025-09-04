@@ -9,10 +9,10 @@ import {
   type Word,
 } from '@/lib/wordbook';
 
-export const useWordSave = (word: Word) => {
+export const useWordSave = (word?: Word | null) => {
   const isAlreadySaved = useSyncExternalStore(
     subscribeWordbook,
-    () => isWordSaved(word.word_jp),
+    () => (word ? isWordSaved(word.word_jp) : false),
     () => false
   );
 
